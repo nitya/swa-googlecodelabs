@@ -20,3 +20,19 @@ Create, build and deploy a Google Codelabs formatted tutorial to Azure Static We
  * [Codelab: Create Custom View](https://github.com/googlecodelabs/tools#how-do-i-generate-a-custom-view)
  * [Codelab: Publish Codelabs](https://github.com/googlecodelabs/tools#how-do-i-publish-my-codelabs)
  * [Codelab Preview: Chrome Extension](https://chrome.google.com/webstore/detail/preview-codelab/lhojjnijnkiglhkggagbapfonpdlinji)
+
+
+## Troubleshooting
+
+```bash
+Oryx was unable to determine the build steps. Continuing assuming the assets in this folder are already built. If this is an unexpected behavior please contact support.
+Finished building app with Oryx
+
+Failed to find a default file in the app artifacts folder (/). Valid default files: index.html,Index.html.
+
+If your application contains purely static content, please verify that the variable 'app_location' in your workflow file points to the root of your application.
+
+If your application requires build steps, please validate that a default file exists in the build output directory.
+```
+
+Added Placeholder index.html
