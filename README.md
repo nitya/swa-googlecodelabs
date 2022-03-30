@@ -1,6 +1,11 @@
 # GoogleCodeLabs Tutorials Deployed To Static Web Apps
 
-Create, build and deploy a Google Codelabs formatted tutorial to Azure Static Web Apps
+Create, build and deploy a Google Codelabs formatted tutorial to Azure Static Web Apps. For consistency, I'll going to explore using the [Markdown format](https://github.com/googlecodelabs/tools#ok-how-do-i-use-it) for creating the tutorial. I am using [this example](https://raw.githubusercontent.com/googlecodelabs/tools/main/sample/codelab.md) as guidance.
+
+
+ * [Tutorial 1: Create & Deploy Codelab to SWA](deploy-codelab-to-swa.md)
+
+
 
 ## Key Resources
 
@@ -15,6 +20,3 @@ Create, build and deploy a Google Codelabs formatted tutorial to Azure Static We
  * [Codelab: Create Custom View](https://github.com/googlecodelabs/tools#how-do-i-generate-a-custom-view)
  * [Codelab: Publish Codelabs](https://github.com/googlecodelabs/tools#how-do-i-publish-my-codelabs)
  * [Codelab Preview: Chrome Extension](https://chrome.google.com/webstore/detail/preview-codelab/lhojjnijnkiglhkggagbapfonpdlinji)
-
-
- ## Getting Started
