@@ -3,12 +3,12 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2022-03-30T09:14:32-04:00",
-  "id": "codelab-on-swa-markdown",
+  "updated": "2022-03-30T13:31:47-04:00",
+  "id": "codelabs-on-swa",
   "duration": 14,
-  "title": "Create and deploy a Codelab to Azure Static Web Apps",
+  "title": "Deploy Codelabs to Static Web Apps",
   "summary": "Create and deploy a Google Codelabs tutorial to Azure Static Web Apps",
-  "source": "../deploy-codelab-to-swa.md",
+  "source": "codelabs-on-swa.md",
   "theme": "",
   "status": [
     "published"
@@ -23,5 +23,5 @@
     "web"
   ],
   "feedback": "https://github.com/nitya/swa-googlecodelabs/issues",
-  "url": "codelab-on-swa-markdown"
+  "url": "codelabs-on-swa"
 }

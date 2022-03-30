@@ -1,3 +1,4 @@
+
 <!doctype html>
 
 <html>
@@ -5,7 +6,7 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title>Create and deploy a Codelab to Azure Static Web Apps</title>
+  <title>Deploy Codelabs to Static Web Apps</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
@@ -21,14 +22,15 @@
 <body>
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
   <google-codelab codelab-gaid=""
-                  id="codelab-on-swa-markdown"
-                  title="Create and deploy a Codelab to Azure Static Web Apps"
+                  id="codelabs-on-swa"
+                  title="Deploy Codelabs to Static Web Apps"
                   environment="web"
                   feedback-link="https://github.com/nitya/swa-googlecodelabs/issues">
     
       <google-codelab-step label="CodeLab Overview" duration="2">
         <p>Are you someone who loves to share what they learn in ways that help others follow along? This codelab will teach you how to author a tutorial in Markdown, and use Azure Static Web Apps for hosting.</p>
-<p>Read <a href="https://docs.microsoft.com/en-us/azure/static-web-apps/media/overview" target="_blank">this</a> for a high-level overview of how Azure Static Web Apps works with your GitHub repo, to automate deployment on every change.</p>
+<p>Read <a href="https://docs.microsoft.com/en-us/azure/static-web-apps/overview" target="_blank">this</a> for a high-level overview of how Azure Static Web Apps works with your GitHub repo, to automate deployment on every change.</p>
+<p class="image-container"><img src="img/eb9b8c72815ccd69.png"></p>
 <p><strong>Resources:</strong></p>
 <ul>
 <li><a href="https://github.com/googlecodelabs/tools" target="_blank">Google Codelabs Tools</a> - our authoring tool.</li>
@@ -186,6 +188,7 @@ Adding an image!
       <google-codelab-step label="Export and Serve" duration="2">
         <p>Now that you have an initial codelab defined in your markdown file let&#39;s go ahead and generate the static site content. We can export and serve the content locally using the <code>claat</code> command that we installed earlier.</p>
 <pre><code language="language-bash" class="language-bash">$ claat export codelab.md
+ok	codelab-on-swa-markdown
 $ claat serve
 </code></pre>
 <ul>
@@ -198,7 +201,8 @@ $ claat serve
       </google-codelab-step>
     
       <google-codelab-step label="Host Your CodeLab" duration="1">
-        <p>When you ran the <code>claat export</code> command you created the static web content needed to host your codelab. It placed static web content in a directory specified by your unique &#34;id&#34; and you can view it locally by opening the index.html page.</p>
+        <p>When you ran the <code>claat export</code> command you created the static web content needed to host your codelab.</p>
+<p>It placed static web content in a directory specified by your unique &#34;id&#34; and you can view it locally by opening the index.html page.</p>
 <p>Negative : Note that when you view it locally by opening index.html some of the graphics may not show up (such as access_time, Next, Back), but they work once online.</p>
 <p>Now that you have the static content you can host it however you want. One option is pushing it to github and serving it up from Netlify.</p>
 <p>If you&#39;d like to create your own landing page for codelabs, <a href="https://codelabs.developers.google.com" target="_blank">like this one</a>, there is a tool to do that as well! Check it out here: <a href="https://github.com/googlecodelabs/tools/blob/master/site/README.md" target="_blank">CodeLabs Site</a></p>
