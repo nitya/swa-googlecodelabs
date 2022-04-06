@@ -12,9 +12,14 @@ analytics account:
 ## CodeLab Overview
 Duration: 0:02:00
 
-Are you someone who loves to share what they learn in ways that help others follow along? This codelab will teach you how to author a tutorial in Markdown, and use Azure Static Web Apps for hosting.
+ [Google Codelabs](https://github.com/googlecodelabs/tools) is a tool for authoring and publishing interactive tutorials online - in three steps:
+  * Author tutorials using Markdown (see [guidelines](https://github.com/googlecodelabs/tools/tree/main/claat/parser/md)).
+  * Export them to create static content (using [claat](https://github.com/googlecodelabs/tools/tree/main/claat) - "Code Labs As A Tool").
+  * Deploy them online - e.g., using [one of many options](https://github.com/googlecodelabs/tools#how-do-i-publish-my-codelabs).
 
-Read [this](https://docs.microsoft.com/en-us/azure/static-web-apps/overview) for a high-level overview of how Azure Static Web Apps works with your GitHub repo, to automate deployment on every change.
+In this tutorial, we'll explore [Azure Static Web Apps (SWA)](https://docs.microsoft.com/en-us/azure/static-web-apps/) as our deployment option. Read [this overview](https://docs.microsoft.com/en-us/azure/static-web-apps/overview) to understand how Static Web Apps differs from traditional monolithic web server deployment approaches.
+
+We'll use Visual Studio Code with [this VS Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps) to reduce our Static Web Apps setup to just a few clicks. Once done, this setups a GitHub Actions workflow that automatically rebuilds and redeploys the codelab content with every change to the repository. The figure below gives you a high-level view of what that looks like.
 
 ![](static/azure-static-web-apps-overview.png)
 
@@ -26,10 +31,10 @@ Read [this](https://docs.microsoft.com/en-us/azure/static-web-apps/overview) for
 ## Setup Local Environment
 Duration: 0:04:00
 
-This section of the codelab is adapted from this [Create a Codelab tutorial](https://www.marcd.dev/codelab-4-codelab/#0) that is the [default markdown sample](https://github.com/googlecodelabs/tools/blob/main/sample/codelab.md) on Google Codelabs. I followed on a macOS device (tested on Monterey and Big Sur) but you can follow [this](https://github.com/googlecodelabs/tools/tree/main/claat) guidance for other OS.
+This section of the codelab was adapted from the [Create a Codelab tutorial](https://www.marcd.dev/codelab-4-codelab/#0) and tested in a macOS development device. You can refer to [this](https://github.com/googlecodelabs/tools/tree/main/claat) guidance for other device platforms. Setup involves three steps:
 
 
-#### Install Go 
+#### 1. Install Go 
 
 Install [Go](https://golang.org/dl/) if you don't have it.
 You can use Homebrew if you have it on mac 
@@ -43,7 +48,7 @@ $ go version
 go version go1.18 darwin/amd64
 ```
 
-#### Setup Go Environment Variables
+#### 2. Setup Go Environment Variables
 Below is what I set on mac, but instructions are [here](https://golang.org/doc/install) for other OS options
 
 ``` bash
@@ -53,63 +58,53 @@ $ export PATH=$PATH:$GOPATH/bin
 $ export PATH=$PATH:$GOROOT/bin
 ```
 
-#### Install claat
+#### 3. Install claat
 
-Install claat using the command below. Note that the older `go get` command is no longer supported outside a module. 
+Use this command (instead of the `go get` option that was previously referenced). Validate your installation by using `claat -h` to view the list of supported options. Once set, you can move on to creating your first codelab!
 
 ``` bash
 $ go install github.com/googlecodelabs/tools/claat@latest
 ```
 
-You should now have the *claat* command available to you. Use the `-h` option to see documentation. You should see something like this (truncated for clarity)
-``` bash
-$ claat -h
-Usage: claat <cmd> [options] src [src ...]
-
-Available commands are: export, serve, update, version.
-..
-..
-```
-
-
-## Create your initial CodeLab
+## Create your first CodeLab
 Duration: 0:01:00
 
-Since the codelab is in [Markdown]() any text editor or IDE will do. I prefer using [Visual Studio Code](https://code.visualstudio.com/) which comes with built-in Markdown support and will simplify our Azure Static Web Apps setup later.
+Since the codelab is in [Markdown]() any text editor or IDE will do. 
+
+I am using [Visual Studio Code](https://code.visualstudio.com/) because it is my preferred editor, but also because it will simplify our Azure Static Web Apps setup later. Here are three things you can do to get ready for this exercise:
  * [Setup VS Code](https://code.visualstudio.com/docs) with [command line launch](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line) support.
- * [Learn VS Code basics](https://code.visualstudio.com/docs/getstarted/introvideos) and support for [extensions](https://code.visualstudio.com/docs/editor/extension-marketplace)
- * [Bookmark Azure extensions](https://code.visualstudio.com/docs/azure/extensions) - we'll use that later.
+ * [Learn VS Code](https://code.visualstudio.com/docs/getstarted/introvideos) basics if you're new to the IDE.
+ * [Bookmark Extensions Marketplace](https://code.visualstudio.com/docs/editor/extension-marketplace) - we'll use that later.
 
-Once setup, simply open a new markdown file as shown. Note the `.md` extension - but customize your filename to something descriptive of your tutorial.
+Have VS Code setup?
 
-####
+Open a new markdown file as shown below, to author your first tutorial!
+
 ``` bash
 $ code codelabs-on-swa.md
 ```
 
-## Fill-in the header metadata
+## Fill in header metadata
 Duration: 0:03:00
 
-Copy and paste the headers below into your markdown file and change the values appropriately. 
-Guidelines are available below the sample headers. 
+Here is the recommended set of metadata (key-value pairs) you need to define in the front-matter of your markdown file. 
 
 ``` bash
-author: Author Name
-summary: Summary of your codelab that is human readable
-id: unique-codelab-identifier
-categories: codelab,markdown,swa
-environments: Web
-status: Published
-feedback link: A link where users can go to provide feedback (Maybe the git repo)
-analytics account: Google Analytics ID
+author: <Author Name>
+summary: <Summary of your codelab that is human readable>
+id: <unique-codelab-identifier<>
+categories: <codelab,markdown,swa>
+environments: <Web>
+status: <Published>
+feedback link: <A link where users can go to provide feedback (Maybe the git repo)>
+analytics account: <Google Analytics ID>
 ```
+Copy the above section into your empty Markdown document:
+ * Replace the `< >` contents with relevant values for your tutorial.
+ * Ensure metadata appears before the title (first-level header) in document. 
+ * Ensure each _value_ is written in a single line.
 
-
-Metadata consists of pairs of the form "key: value". Keys cannot contain colons, and separate metadata fields must be separated by blank lines. At present, values must all be on one line. All metadata must come before the
-title. 
-
-Any arbitrary keys and values may be used; however, only the following
-will be understood by the renderer:
+You can add any key-value pairs you want to - however, only the following are interpreted by the Codelabs renderer meaningfully as described below:
 
 | | |
 |:---|:---|
@@ -123,18 +118,19 @@ will be understood by the renderer:
 | | |
 
 
-#### Add the Title
-Next add your title using a single '#' character
+## Add Content and Durations
+Duration: 0:02:00
+
+#### 1. Add Codelab Title
+First, add your title using a single '#' character
+
 ```
 # Title of codelab
 ```
 
-## Add Sections and Durations
-Duration: 0:02:00
+#### 2. Add Section Duration
 
-Then for each section use Header 2 or '##' and specify an optional duration beneath for time remaining calculations
-Optional section times will be used to automatically total and remaining tutorial times
-In markdown I've found that the time is formatted hh:mm:ss
+Then for each section use Header 2 or '##' and specify an optional _duration_ (in hh:mm:ss format) immediately beneath it. This information will be used to compute and display remaining time to complete the tutorial when the reader reaches that section.
 
 Example
 ``` bash
@@ -145,88 +141,71 @@ Duration: 0:10:00
 Duration: 0:05:00
 ```
 
-#### Add Section Content
-Now that we have 2 sections to our titled codelab let's go ahead and add some content to each section. 
-Make up your own or copy and paste the example below: 
+#### 3. Add Section Content
 
-Copy into section 1 (Below Duration and above Section 2):
-```
-### Info Boxes
-Plain Text followed by green and yellow info boxes 
+Write the body of your section content using [supported Markdown](https://github.com/googlecodelabs/tools/tree/main/claat/parser/md) formats. You can use these to create lists, add embed images or even iFrames.
 
-Negative
-: This will appear in a yellow info box.
 
-Positive
-: This will appear in a green info box.
-
-You created info boxes!
-
-### Bullets
-Plain Text followed by bullets
-* Hello
-* CodeLab
-* World
-
-You created bullets!
-
-### Numbered List
-1. List
-1. Using
-1. Numbers
-
-You created a numbered list!
+For instance, the Markdown snippet below:
 
 ```
-
-Copy into section 2 (Below Duration): 
-```
-### Add a Link
-Adding a link!
-[Example of a Link](https://www.google.com)
-
-### Add an Image
-Adding an image!
-![image_caption](https://googlecloud.tips/img/031/codelabs.png)
-
-### Embed an iframe
 ![https://codepen.io/tzoght/embed/yRNZaP](https://en.wikipedia.org/wiki/File:Example.jpg "Try Me Publisher")
 ```
 
-More Markdown Parser examples can be found [here](https://github.com/googlecodelabs/tools/tree/master/claat/parser/md).
+will be rendered as the content below:
 
-## Export and Serve
+![https://codepen.io/tzoght/embed/yRNZaP](https://en.wikipedia.org/wiki/File:Example.jpg "Try Me Publisher")
+
+Try to keep each section short and focused on a single task.
+
+## Export and Preview
 Duration: 0:02:00
 
-Now that you have an initial codelab defined, you can export it using `claat` to generate the static content files. 
+Once your Markdown-driven content is complete, export it to static content files using the following command:
 
 ``` bash
 $ claat export codelabs-on-swa.md
 ok	codelabs-on-swa
 ```
-Use the following command to then see a local preview of what that codelab looks like:
+
+You can preview the generated codelab webpage using this command in the same directory:
 
 ```bash
 $ claat serve
 ```
 
-* This should launch the browser to `http://localhost:9090` automatically. Else try opening the URL manually in browser. 
-* Pick the subfolder corresponding to the "id" in your codelab header. _There's your first codelab!_
+This should automatically launch a browser - else open one manually to `http://localhost:9090` - and display a list of subfolders. Click on the subfolder corresponding to the "id" value in your codelab header.  _You should be looking at your rendered codelab!_.
 
-## Host Your CodeLab
-Duration: 0:01:00
+## Deploy and Serve
+Duration: 0:03:00
 
-The `claat export` command creates static files that represent the codelab. Let's see what those look like:
+### Export to static files
+
+The `claat export` command creates static files that represent the codelab. Let's see what those look like - we should have a `codelabs.json` file providing configuration information, an `img` directory with static image assets (if any) and an `index.html` which has the main website content. 
 
 ```bash
 $ ls codelabs-on-swa
 codelab.json	img		index.html
 ```
-The `img` folder contains any static images referenced in your codelabs. You can now host this static website on any relevant provider - here are [some options](https://github.com/googlecodelabs/tools#how-do-i-publish-my-codelabs). 
 
-In this codelab, we'll look at hosting this on [Azure Static Web Apps](https://docs.microsoft.com/en-us/azure/static-web-apps/)
+Note that this process sets us up with a default Google Analytics ID. You should be able to modify this to reflect your own tracking needs - make sure you update both the JSON and HTML files accordingly.
 
-> To be continued
+### Setup Azure Static Web Apps
+
+Let's setup our code repsitory to use [Azure Static Web Apps](https://docs.microsoft.com/en-us/azure/static-web-apps/) for automated deployment.
+
+1. Install the [Static Web Apps Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps) in VS Code.
+2. Follow the [steps in the above tutorial](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps) to _Create your first static web app_.
+3. Specify `codelabs-on-swa` ("id" in header) for your app_location.
+4. Specify `""` for your api_location (nothing integrated yet)
+5. Specify `codelabs-on-swa` for your output_location
+
+The last step is key since we're currently setting up GitHub Actions to automate the _deploy_ step, but using manual _claat_ commands to create and commit the _build_ step. As a result the app_location and output_location values are identical. 
+
+Once configured, let the SWA Extension setup complete - you should see a notification in your VS Code window indicating that the site was successfully deployed to Azure Static Web Apps - along with a published URL that you can visit to see the site in action.
+
+### Updating the Tutorial
+Simply modify the core Markdown file and run the `claat export` command to rebuild the static files. Commit changes to trigger the GitHub Action which will automatically redeploy the site for you. Later, we can explore setting up the `claat` commands via GitHub Actions to automate the build steps as well.
 
 
 ## Next Steps: Landing Page
